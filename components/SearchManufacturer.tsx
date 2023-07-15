@@ -32,35 +32,35 @@ const SearchManufacturer = ({ manufacturer, setManufacturer }: SearchManufacture
               className='ml-4'
               alt='car logo'
             />
-             </Combobox.Button>
+          </Combobox.Button>
 
-            <Combobox.Input 
-              className="search-manufacturer__input"
-              placeholder='Volkswagen'
-              displayValue={(manufacturer: string) => manufacturer}
-              onChange={(e) => setQuery(e.target.value)}
-            />
+          <Combobox.Input 
+            className="search-manufacturer__input"
+            placeholder='Volkswagen'
+            displayValue={(manufacturer: string) => manufacturer}
+            onChange={(e) => setQuery(e.target.value)}
+          />
 
-              <Transition as={Fragment}
-                leave='transition easi-in duration-100'
-                leaveFrom='opacity-100'
-                leaveTo='opacity-0'
-                afterLeave={() => setQuery('')}
-              >
-                <Combobox.Options>
-                  {filteredManufacturers.map((item) => (
-                    <Combobox.Option
-                      key={item}
-                      className={({active}) => `
-                        relative search-manufacturer__option 
-                        ${active ? 'bg-primary-blue text-white' : 'text-gray-900'}`}
-                        value={item}
-                    >
-                      {item}
-                    </Combobox.Option>
-                  ))}
-                </Combobox.Options>
-              </Transition>
+          <Transition as={Fragment}
+            leave='transition easi-in duration-100'
+            leaveFrom='opacity-100'
+            leaveTo='opacity-0'
+            afterLeave={() => setQuery('')}
+          >
+            <Combobox.Options>
+              {filteredManufacturers.map((item) => (
+                <Combobox.Option
+                  key={item}
+                  className={({active}) => `
+                    relative search-manufacturer__option 
+                    ${active ? 'bg-primary-blue text-white' : 'text-gray-900'}`}
+                    value={item}
+                >
+                  {item}
+                </Combobox.Option>
+              ))}
+            </Combobox.Options>
+          </Transition>
 
         </div>
       </Combobox>
