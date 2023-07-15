@@ -1,9 +1,16 @@
 import { CarCard, CustomFilter, Hero, SearchBar } from '@/components'
+import { FilterProps } from '@/types';
 import { fecthCars } from '@/utils'
 
-export default async function Home() {
+export default async function Home({ searchParams }) {
 
-  const allCars = await fecthCars();
+  const allCars = await fecthCars({
+    manufacturer: searchParams.manufacturer || '',
+    year: searchParams.year || 2022,
+    fuel: searchParams.fuel || '',
+    limit: searchParams.limit || 10,
+    model: searchParams.model || ''
+  });
 
   const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
 

@@ -34,20 +34,22 @@ const SearchBar = () => {
   const updateSearchParams = (model: string, manufacturer: string) => {
     const searchParams = new URLSearchParams(window.location.search);
 
-    if(model) {
+    if(model) { //Si existe el modelo se guarda como parametro, si no se borra de la URL
       searchParams.set('model', model);
     } else {
       searchParams.delete('model');
     }
 
-    if(manufacturer) {
+    if(manufacturer) { //Si existe elfabricante se guarda como parametro, si no se borra de la URL
       searchParams.set('manufacturer', manufacturer);
     } else {
       searchParams.delete('manufacturer');
     }
 
+    // Se concatenoa la url actual con los nuevos parametros
     const newPathName = `${window.location.pathname}?${searchParams.toString()}`;
 
+    // navegas al nuevo pahName (que es el mismo pero con los parametros de busqueda)
     router.push(newPathName);
   } 
 
